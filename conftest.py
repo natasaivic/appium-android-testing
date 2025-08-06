@@ -1,6 +1,7 @@
 import pytest
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
+from page_objects.landing_page import LandingPage
 
 
 @pytest.fixture(scope="function")
@@ -34,3 +35,11 @@ def reset_app(driver):
     """Reset app to main screen before each test"""
     # With function scope driver, each test gets fresh driver
     yield
+
+
+@pytest.fixture
+def landing_page(driver, reset_app):
+    """Provide a verified landing page instance"""
+    page = LandingPage(driver)
+    assert page.is_landing_page_displayed(), "Landing page should be displayed"
+    return page
