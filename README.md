@@ -21,7 +21,7 @@ This project demonstrates automated testing of native Android applications using
 
 3. Install dependencies:
    ```bash
-   pip install Appium-Python-Client
+   pip install -r requirements.txt
    ```
 
 4. Install Appium server and driver:
@@ -47,24 +47,32 @@ adb install ApiDemos.apk
 
 ## Running Tests
 
-1. Start Appium server:
+1. Set Android environment variables and start Appium server:
    ```bash
-   appium
+   ANDROID_HOME="/Users/your_username/Library/Android/sdk" ANDROID_SDK_ROOT="/Users/your_username/Library/Android/sdk" appium
    ```
 
 2. Run tests:
    ```bash
-   python test_script.py
+   source venv/bin/activate
+   pytest test_cases/test_accessibility.py -v
    ```
 
 ## Project Structure
 
 ```
 appium-android-testing/
-├── venv/                 # Virtual environment
-├── ApiDemos.apk         # Test application
-├── test_script.py       # Test scripts
-└── README.md           # This file
+├── page_objects/         # Page Object Model files
+│   ├── base_page.py     # Base class with reusable methods
+│   ├── landing_page.py  # API Demos main screen
+│   └── accessibility_page.py # Accessibility screen
+├── test_cases/          # Test files
+│   └── test_accessibility.py # Accessibility navigation test
+├── venv/                # Virtual environment
+├── ApiDemos.apk        # Test application
+├── conftest.py         # Pytest configuration
+├── requirements.txt    # Dependencies
+└── README.md          # This file
 ```
 
 ## Capabilities
@@ -75,9 +83,13 @@ The test uses these desired capabilities:
 - App: io.appium.android.apis
 - Automation: UiAutomator2
 
-## Features Tested
+## Tests Implemented
 
-- UI element interactions
-- Navigation flows
-- Input validation
-- Screen assertions
+- **test_accessibility.py**: Tests navigation from main screen to Accessibility screen using Page Object Model
+
+## Features
+
+- Page Object Model architecture
+- Automated UI navigation testing
+- Pytest framework integration
+- Clean project structure
