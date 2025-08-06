@@ -3,7 +3,7 @@ from appium import webdriver
 from appium.options.android import UiAutomator2Options
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def driver():
     """Setup and teardown for Appium driver"""
     
@@ -32,5 +32,5 @@ def driver():
 @pytest.fixture(scope="function") 
 def reset_app(driver):
     """Reset app to main screen before each test"""
-    # App should already be at main screen with no_reset=False
+    # With function scope driver, each test gets fresh driver
     yield
