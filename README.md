@@ -98,3 +98,5 @@ The test uses these desired capabilities:
 - Automated UI navigation testing
 - Pytest framework integration
 - Clean project structure
+- Page object fixtures to reduce test duplication
+- Reusable base page with common methods

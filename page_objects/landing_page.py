@@ -36,11 +36,17 @@ class LandingPage(BasePage):
     
     def click_accessibility(self):
         """Click on Accessibility menu item"""
-        return self.click(self.ACCESSIBILITY)
+        if self.click(self.ACCESSIBILITY):
+            from page_objects.accessibility_page import AccessibilityPage
+            return AccessibilityPage(self.driver)
+        return None
     
     def click_animation(self):
         """Click on Animation menu item"""
-        return self.click(self.ANIMATION)
+        if self.click(self.ANIMATION):
+            from page_objects.animation_page import AnimationPage
+            return AnimationPage(self.driver)
+        return None
     
     def click_app(self):
         """Click on App menu item"""
