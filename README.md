@@ -56,6 +56,8 @@ adb install ApiDemos.apk
    ```bash
    source venv/bin/activate
    pytest test_cases/test_accessibility.py -v
+   pytest test_cases/test_animation.py -v
+   # Or run all tests: pytest test_cases/ -v
    ```
 
 ## Project Structure
@@ -65,9 +67,11 @@ appium-android-testing/
 ├── page_objects/         # Page Object Model files
 │   ├── base_page.py     # Base class with reusable methods
 │   ├── landing_page.py  # API Demos main screen
-│   └── accessibility_page.py # Accessibility screen
+│   ├── accessibility_page.py # Accessibility screen
+│   └── animation_page.py # Animation screen
 ├── test_cases/          # Test files
-│   └── test_accessibility.py # Accessibility navigation test
+│   ├── test_accessibility.py # Accessibility navigation test
+│   └── test_animation.py # Animation page load test
 ├── venv/                # Virtual environment
 ├── ApiDemos.apk        # Test application
 ├── conftest.py         # Pytest configuration
@@ -86,6 +90,7 @@ The test uses these desired capabilities:
 ## Tests Implemented
 
 - **test_accessibility.py**: Tests navigation from main screen to Accessibility screen using Page Object Model
+- **test_animation.py**: Tests navigation to Animation screen and verifies page load success
 
 ## Features
 
